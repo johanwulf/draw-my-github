@@ -31,14 +31,12 @@ function App() {
               const dateIndex = weekIndex * 7 + dayIndex;
               const date = days[dateIndex];
 
-              if (date) {
-                return (
-                  <p key={dateIndex} className="calendar-date">
-                    {date.toString()}
-                  </p>
-                );
+              if (date && date.getFullYear() === year) {
+                return <p key={dateIndex} className="calendar-date"></p>;
               } else {
-                return <p key={dateIndex} className="calendar-no-date"></p>;
+                return (
+                  <p key={dateIndex} className="calendar-date outside"></p>
+                );
               }
             })}
           </div>

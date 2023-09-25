@@ -65,12 +65,14 @@ p {
 
 .calendar-date {
   background: #21262d;
-  border-radius: 2px;
-}
-
-.calendar-no-date {
-  background: #161b22;
   width: 10px;
   height: 10px;
   border-radius: 2px;
+  cursor: pointer;
+}
+
+.outside {
+  background: #161b22;
+  border-radius: 2px;
+  cursor: auto;
 }
