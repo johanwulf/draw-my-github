@@ -61,7 +61,6 @@ function App() {
           <div key={weekIndex} className="calendar-row">
             {[...Array(7)].map((_, dayIndex) => {
               const dateIndex = weekIndex * 7 + dayIndex;
-              // get date from commitday object
               const date = days[dateIndex];
 
               if (date && date.date.getFullYear() === year) {
@@ -70,15 +69,18 @@ function App() {
                     key={dateIndex}
                     className={`calendar-date ${date.date}`}
                     style={{ background: date.color }}
-                    onMouseDown={(e) => {
+                    onMouseDown={() => {
                       const updatedDate = days[dateIndex];
                       updatedDate.color = selectedColor;
-                      setDays([...days, updatedDate]);
+                      days.splice(dateIndex, 1, updatedDate);
+                      setDays([...days]);
                     }}
                   ></p>
                 );
               } else {
-                return <></>;
+                return (
+                  <p className="calendar-date outside" key={dateIndex}></p>
+                );
               }
             })}
           </div>
